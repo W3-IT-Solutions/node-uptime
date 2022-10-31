@@ -72,11 +72,11 @@ RESPONSE (200)
 
 ## Tutorial
 
-```javascript
+```
 npm init
 ```
 
-```javascript
+```
 npm install express
 ```
 
@@ -92,4 +92,22 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+```
+
+```
+npm install nodemon --save-dev
+```
+
+Modify script in package.json
+```json
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+```
+
+Run app:
+```
+npm run dev
 ```
