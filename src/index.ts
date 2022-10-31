@@ -20,12 +20,25 @@ app.get("/", (req: Request, res: Response) => {
     res.json({ "status": "ok" });
 });
 
-app.post("/applications", async (req: Request, res: Response) => {
-    const application: IApplication = req.body
-    const account = new ApplicationModel(application)
-    await account.save()
-    res.json(account);
-})
+app.route("/applications/:group")
+    .post(async (req: Request, res: Response) => {
+        const application: IApplication = req.body
+        const model = new ApplicationModel(application)
+        await model.save()
+        res.json(model);
+    })
+    .get(async (req: Request, res: Response) => {
+        const group = req.params.group;
+        console.log(group);
+        let applications;
+        if(!group){
+            applications = await ApplicationModel.find();
+        }else{
+
+        }
+        
+        res.json({applications: applications});
+    });
 
 app.listen(port, () => {
     console.log(`App running in port ${port}`);
