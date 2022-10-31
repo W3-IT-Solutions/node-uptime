@@ -99,6 +99,7 @@ npm install nodemon --save-dev
 ```
 
 Modify script in package.json
+
 ```json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -108,6 +109,44 @@ Modify script in package.json
 ```
 
 Run app:
+
 ```
 npm run dev
 ```
+
+## Install Cors
+
+```
+npm install cors
+```
+
+## Body parser
+
+```
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+```
+
+## Using Typescript
+
+```
+npm i -D typescript @types/express @types/node
+```
+
+Create tsconfig.json
+
+```
+npx tsc --init
+```
+
+Update package.json script
+
+```
+"build": "npx tsc",
+"dev": "nodemon index.ts",
+"start": "tsc && node dist/index.js"
+```
+
+
