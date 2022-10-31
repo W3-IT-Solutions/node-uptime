@@ -145,8 +145,21 @@ Update package.json script
 
 ```
 "build": "npx tsc",
-"dev": "nodemon index.ts",
+"dev": "nodemon src/index.ts",
 "start": "tsc && node dist/index.js"
 ```
 
 
+## Config Database (mongo) 
+
+Install mongoose
+```
+npm install mongoose
+```
+
+Create config/database.ts
+
+
+```
+npm i dotenv
+```
