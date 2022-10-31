@@ -5,61 +5,91 @@
 ### POST /applications
 
 REQUEST
+
 ```json
 {
-    "name":"Landing",
-    "description":"",
-    "url":"",
-    "group": "project1",
-    "configuration":{
-        "interval": 300,
-        "retries": 3,
-        "retryInterval": 30
-    }
+  "name": "Landing",
+  "description": "",
+  "url": "",
+  "group": "project1",
+  "configuration": {
+    "interval": 300,
+    "retries": 3,
+    "retryInterval": 30
+  }
 }
 ```
 
 RESPONSE (201)
+
 ```json
 {
-    "name":"Landing",
-    "description":"",
-    "url":"",
-    "group": "project1",
-    "configuration":{
-        "interval": 300,
-        "retries": 3,
-        "retryInterval": 30
-    }
+  "name": "Landing",
+  "description": "",
+  "url": "",
+  "group": "project1",
+  "configuration": {
+    "interval": 300,
+    "retries": 3,
+    "retryInterval": 30
+  }
 }
 ```
 
-### GET /applications/:group
+### GET /applications/
 
 (optional group)
 
 RESPONSE (200)
-````json
+
+```json
 {
-    "applications": [{"name":"Landing", "status":"healthy", "group":["project1"]}]
+  "applications": [
+    { "name": "Landing", "status": "healthy", "group": ["project1"] }
+  ]
 }
 ```
 
 ### GET /applications/:name
 
 RESPONSE (200)
+
 ```json
 {
-    "name":"Landing",
-    "description":"",
-    "url":"",
-    "group": "project1",
-    "configuration":{
-        "interval": 300,
-        "retries": 3,
-        "retryInterval": 30
-    },
-    "uptimeDay": 99.9,
-    "uptimeMonth": 98.3
+  "name": "Landing",
+  "description": "",
+  "url": "",
+  "group": "project1",
+  "configuration": {
+    "interval": 300,
+    "retries": 3,
+    "retryInterval": 30
+  },
+  "uptimeDay": 99.9,
+  "uptimeMonth": 98.3
 }
+```
+
+## Tutorial
+
+```javascript
+npm init
+```
+
+```javascript
+npm install express
+```
+
+```javascript
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
 ```
