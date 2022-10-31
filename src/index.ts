@@ -4,6 +4,7 @@ import cors from "cors"
 import { databaseConnect } from "./config/database"
 import { IApplication } from "./interfaces/application";
 import * as dotenv from 'dotenv'
+import { ApplicationModel } from "./models/application";
 
 dotenv.config()
 const app = express();
@@ -19,10 +20,11 @@ app.get("/", (req: Request, res: Response) => {
     res.json({ "status": "ok" });
 });
 
-app.post("/applications", (req: Request, res: Response) => {
+app.post("/applications", async (req: Request, res: Response) => {
     const application: IApplication = req.body
-
-    res.json({ "status": "ok" });
+    const account = new ApplicationModel(application)
+    await account.save()
+    res.json(account);
 })
 
 app.listen(port, () => {
