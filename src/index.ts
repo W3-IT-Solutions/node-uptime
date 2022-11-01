@@ -15,7 +15,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.use("/monitors",monitorRouter);
+app.use("/monitors", monitorRouter);
 
 app.get("/", (req: Request, res: Response) => {
     res.json({ "status": "ok" });

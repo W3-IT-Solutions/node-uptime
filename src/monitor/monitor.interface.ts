@@ -6,4 +6,8 @@ interface IMonitor {
     configuration: { interval: number, retries: number, retryInterval: number }
 }
 
-export { IMonitor }
+interface IMonitorUpdate extends IMonitor {
+    id: string
+}
+
+export { IMonitor, IMonitorUpdate }
