@@ -1,4 +1,4 @@
-interface IApplication {
+interface IMonitor {
     name: string
     description: string
     url: string
@@ -6,4 +6,4 @@ interface IApplication {
     configuration: { interval: number, retries: number, retryInterval: number }
 }
 
-export { IApplication }
+export { IMonitor }

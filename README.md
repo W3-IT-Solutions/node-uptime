@@ -2,7 +2,7 @@
 
 ## Endpoints
 
-### POST /applications
+### POST /monitors
 
 REQUEST
 
@@ -36,7 +36,7 @@ RESPONSE (201)
 }
 ```
 
-### GET /applications/
+### GET /monitors/
 
 (optional group)
 
@@ -44,13 +44,13 @@ RESPONSE (200)
 
 ```json
 {
-  "applications": [
+  "monitors": [
     { "name": "Landing", "status": "healthy", "group": ["project1"] }
   ]
 }
 ```
 
-### GET /applications/:name
+### GET /monitors/:name
 
 RESPONSE (200)
 

@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
-import { IApplication } from "../interfaces/application";
+import { IMonitor } from "./monitor.interface";
 
-const applicationScheme = new Schema<IApplication>({
+const monitorScheme = new Schema<IMonitor>({
   name: String,
   description: String,
   url: String,
@@ -11,5 +11,5 @@ const applicationScheme = new Schema<IApplication>({
   { versionKey: false }
 )
 
-const ApplicationModel = model('Application', applicationScheme);
-export { ApplicationModel }
+const MonitorModel = model('Monitor', monitorScheme);
+export { MonitorModel }
