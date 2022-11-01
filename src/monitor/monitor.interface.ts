@@ -1,3 +1,5 @@
+import mongoose from "mongoose"
+
 interface IMonitor {
     name: string
     description: string
@@ -10,4 +12,10 @@ interface IMonitorUpdate extends IMonitor {
     id: string
 }
 
-export { IMonitor, IMonitorUpdate }
+interface IMonitorStamp {
+    monitorId: mongoose.ObjectId
+    status: string
+    datetime: string
+}
+
+export { IMonitor, IMonitorUpdate, IMonitorStamp }

@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { IMonitor } from "./monitor.interface";
+import { IMonitor, IMonitorStamp } from "./monitor.interface";
 
 const monitorScheme = new Schema<IMonitor>({
   name: String,
@@ -12,4 +12,13 @@ const monitorScheme = new Schema<IMonitor>({
 )
 
 const MonitorModel = model('Monitor', monitorScheme);
-export { MonitorModel }
+
+const monitorStampScheme = new Schema<IMonitorStamp>({
+  monitorId: {type: Schema.Types.ObjectId, ref: "Monitor"},
+  status: String,
+},
+  { versionKey: false, timestamps: true }
+)
+
+const MonitorStampModel = model('MonitorStamp', monitorStampScheme);
+export { MonitorModel, MonitorStampModel }
