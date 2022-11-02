@@ -1,3 +1,22 @@
+# Run project
+
+DB
+```
+docker-compose up -d
+```
+
+Run project
+```
+npm i
+npm run dev
+```
+
+# Run with doppler
+```
+doppler run -- npm run dev
+```
+
+
 # UPTIME
 
 ## Endpoints
