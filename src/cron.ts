@@ -17,7 +17,7 @@ const pingFunction = async (hosts: IMonitor[]) => {
             }
         }
         catch (e) {
-            console.log(e)
+            // console.log(e)
         }
         results.push(pingStatus)
     }

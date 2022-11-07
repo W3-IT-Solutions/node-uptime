@@ -74,7 +74,7 @@ RESPONSE (200)
 }
 ```
 
-### GET /monitors/:name
+### GET /detail/:id
 
 RESPONSE (200)
 
