@@ -53,14 +53,14 @@ monitorRouter.get("/detail/:id", async (req: Request, res: Response) => {
 
         let uptimeDay = 0
         if(lastDayCount > 0) {
-            uptimeDay = Math.round(lastDayCountActive/lastDayCount * 100)
+            uptimeDay = Math.round(lastDayCountActive/lastDayCount * 10000)/100
         }
 
         let uptimeMonth = 0
         if(lastMonthCount > 0) {
-            uptimeMonth = Math.round(lastMonthCountActive/lastMonthCount * 100)
+            uptimeMonth = Math.round(lastMonthCountActive/lastMonthCount * 10000)/100
         }
-        res.json({...monitor?.toObject(), uptimeDay, uptimeMonth})
+        res.json({...monitor.toObject(), uptimeDay, uptimeMonth})
     }
     else res.status(404).json({error: "Monitor not found"})
 })
