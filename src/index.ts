@@ -4,10 +4,13 @@ import cors from "cors"
 import { databaseConnect } from "./config/database"
 import * as dotenv from 'dotenv'
 import { monitorRouter } from "./monitor/monitor.router";
+import { task } from "./cron";
 
 dotenv.config()
 const app = express();
 const port = 3000;
+
+task.start()
 
 app.use(cors());
 app.use(express.json());

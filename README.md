@@ -5,6 +5,11 @@ DB
 docker-compose up -d
 ```
 
+Connection through mongo cli
+```bash
+mongosh --username admin --password admin
+``` 
+
 Run project
 ```
 npm i
@@ -181,4 +186,18 @@ Create config/database.ts
 
 ```
 npm i dotenv
+```
+
+### Node Cron
+
+```
+npm install --save node-cron
+npm i --save-dev @types/node-cron
+```
+
+
+### Install ping
+
+```
+npm i ping
 ```
