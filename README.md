@@ -1,3 +1,55 @@
+## Doppler
+
+
+### Installation Linux
+```bash
+sudo apt-get update && sudo apt-get install -y 
+
+apt-transport-https ca-certificates curl gnupg
+
+curl -sLf --retry 3 --tlsv1.2 --proto "=https" 'https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key' | sudo apt-key add -
+
+echo "deb https://packages.doppler.com/public/cli/deb/debian any-version main" | sudo tee /etc/apt/sources.list.d/doppler-cli.list
+
+sudo apt-get update && sudo apt-get install doppler
+```
+
+### Installation Mac
+```bash
+# Prerequisite. gnupg is required for binary signature verification
+brew install gnupg
+
+# Next, install using brew (use `doppler update` for subsequent updates)
+brew install dopplerhq/cli/doppler
+```
+### Login
+
+```bash
+doppler login
+```
+
+- Login: https://dashboard.doppler.com/workplace/auth/cli
+- Paste the provideed code
+
+### Setup
+
+```bash
+doppler setup
+```
+
+- Select project and environment
+
+### Secrets
+
+```bash
+doppler secrets
+```
+
+### Run application with env variables
+
+```bash
+doppler run -- npm run dev
+```
 # Run project
 
 DB
