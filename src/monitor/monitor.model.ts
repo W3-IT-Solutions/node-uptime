@@ -15,7 +15,7 @@ const MonitorModel = model('Monitor', monitorScheme);
 
 const monitorStampScheme = new Schema<IMonitorStamp>({
   monitorId: {type: Schema.Types.ObjectId, ref: "Monitor"},
-  status: String,
+  status: Boolean,
 },
   { versionKey: false, timestamps: true }
 )

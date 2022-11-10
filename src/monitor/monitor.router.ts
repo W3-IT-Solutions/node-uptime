@@ -41,6 +41,14 @@ monitorRouter.get("/:group?", async (req: Request, res: Response) => {
     res.json({ monitors: monitors });
 });
 
+monitorRouter.get("/status/:id", async (req: Request, res: Response) =>{
+    const monitor = await MonitorModel.findById(req.params.id)
+    if(!monitor) return res.json({ status: false });
+     
+    const lastStamp = await MonitorStampModel.find({monitorId:monitor?._id}).sort({_id:-1}).limit(1);
+    return  res.json({ status: !lastStamp || lastStamp.length == 0 ? false : lastStamp[0].status });
+});
+
 monitorRouter.get("/detail/:id", async (req: Request, res: Response) => {
     const monitor = await MonitorModel.findById(req.params.id)
     if (monitor) {
