@@ -58,7 +58,7 @@ monitorRouter.get("/detail/:id", async (req: Request, res: Response) => {
         const lastDayCountActive = await MonitorStampModel.count({monitorId:monitor._id, status:true,  createdAt: {"$gte": lastdayDate}})
         const lastMonthCount = await MonitorStampModel.count({monitorId:monitor._id, createdAt: {"$gte": lastMonthDate}})
         const lastMonthCountActive = await MonitorStampModel.count({monitorId:monitor._id, status:true,  createdAt: {"$gte": lastMonthDate}})
-
+        const lastRequest = await MonitorStampModel.find({monitorId:monitor._id}).sort({_id:-1}).limit(20);
         let uptimeDay = 0
         if(lastDayCount > 0) {
             uptimeDay = Math.round(lastDayCountActive/lastDayCount * 10000)/100
@@ -68,7 +68,7 @@ monitorRouter.get("/detail/:id", async (req: Request, res: Response) => {
         if(lastMonthCount > 0) {
             uptimeMonth = Math.round(lastMonthCountActive/lastMonthCount * 10000)/100
         }
-        res.json({...monitor.toObject(), uptimeDay, uptimeMonth})
+        res.json({...monitor.toObject(), uptimeDay, uptimeMonth, lastRequest})
     }
     else res.status(404).json({error: "Monitor not found"})
 })

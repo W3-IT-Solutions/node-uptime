@@ -3,23 +3,26 @@ import { IMonitor } from './monitor/monitor.interface';
 import { MonitorModel, MonitorStampModel } from './monitor/monitor.model';
 import axios from 'axios';
 
-
+interface IPingResult {
+    status:boolean; 
+    message:string;
+} 
 
 const pingFunction = async (hosts: IMonitor[]) => {
-    let results: boolean[] = []
+    let results: IPingResult[] = []
     for (let host of hosts) {
-        let pingStatus: boolean = false
-        try {
-            const response = await axios({ method: 'get', url: host.url, timeout: 2000 })
-            // status = true
-            if (response.status == 200) {
-                pingStatus = true
+        let pingResult: IPingResult = {status: false, message:''};
+        await axios({ method: 'get', url: host.url, timeout: 2000 })
+        .then((response) => {
+            pingResult = {status: response.status == 200, message:response.statusText}
+        }).catch((error) => {
+            if(error.response){
+                pingResult = {status: false, message: error.response?.statusText || ''}
+            } else {
+                pingResult = {status: false, message:error.message}
             }
-        }
-        catch (e) {
-            // console.log(e)
-        }
-        results.push(pingStatus)
+        })
+        results.push(pingResult);
     }
     return results
 }
@@ -30,7 +33,9 @@ const task = cron.schedule('* * * * *', async () => {
     monitors.forEach(async (monitor, i) => {
         const model = new MonitorStampModel({
             monitorId:monitor._id,
-            status:pingResult[i]})
+            status:pingResult[i].status,
+            message: pingResult[i].message
+        })
         await model.save()
     })
 });
