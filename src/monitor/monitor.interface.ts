@@ -9,7 +9,7 @@ interface IMonitor {
 }
 
 interface IMonitorUpdate extends IMonitor {
-    id: string
+    _id: string
 }
 
 interface IMonitorStamp {

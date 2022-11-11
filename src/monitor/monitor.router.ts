@@ -20,7 +20,7 @@ monitorRouter.route("/")
     })
     .put(async (req: Request, res: Response) => {
         const monitor: IMonitorUpdate = req.body
-        const model = await MonitorModel.findByIdAndUpdate(monitor.id,
+        const model = await MonitorModel.findByIdAndUpdate(monitor._id,
             {
                 name: monitor.name,
                 url: monitor.url,
