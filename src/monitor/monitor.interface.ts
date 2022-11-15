@@ -14,6 +14,7 @@ interface IMonitorUpdate extends IMonitor {
 
 interface IMonitorStamp {
     monitorId: mongoose.ObjectId
+    url: String,
     status: string
     message: string
     datetime: string

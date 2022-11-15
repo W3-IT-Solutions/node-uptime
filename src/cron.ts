@@ -33,6 +33,7 @@ const task = cron.schedule('* * * * *', async () => {
     monitors.forEach(async (monitor, i) => {
         const model = new MonitorStampModel({
             monitorId:monitor._id,
+            url: monitor.url,
             status:pingResult[i].status,
             message: pingResult[i].message
         })
